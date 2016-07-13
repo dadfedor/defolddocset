@@ -146,7 +146,7 @@ local ids = collectionfactory.create("#collectionfactory")
 ...
 -- Delete all objects listed in the table 'ids'.
 go.delete_all(ids)
-</pre></p><h1><a name='//apple_ref/cpp/Function/go.get' class='dashAnchor'></a><a name='go.get'>go.get()</a></h1><p>gets a named property of the specified game object or component</p><h3>PARAMETERS</h3><p>url - url of the game object or component having the property (hash|string|url)</p><p>id - id of the property to retrieve (hash|string)</p><h3>RETURN</h3><p>the value of the specified property (number|hash|url|vector3|vector4|quaternion|boolean)</p><h3>EXAMPLES</h3><p><p>Get a property "speed" from a script "player", the property must be declared in the player-script:</p>
+</pre></p><h1><a name='//apple_ref/cpp/Function/go.get' class='dashAnchor'></a><a name='go.get'>go.get()</a></h1><p>gets a named property of the specified game object or component</p><h3>PARAMETERS</h3><p>url - url of the game object or component having the property (hash|string|url)</p><p>id - id of the property to retrieve (hash|string)</p><h3>RETURN</h3><p>the value of the specified property (any)</p><h3>EXAMPLES</h3><p><p>Get a property "speed" from a script "player", the property must be declared in the player-script:</p>
 <pre>
 go.property("speed", 50)
 </pre>
@@ -237,7 +237,7 @@ function on_message(self, message_id, message, sender)
         print("Ouch! My health is now: " .. self.health)
     end
 end
-</pre></p><h1><a name='//apple_ref/cpp/Function/go.screen_ray' class='dashAnchor'></a><a name='go.screen_ray'>go.screen_ray()</a></h1><p>constructs a ray in world space from a position in screen space</p><p>NOTE! Don't use this function, WIP!</p><h3>PARAMETERS</h3><p>x - x-coordinate of the screen space position (number)</p><p>y - y-coordinate of the screen space position (number)</p><h3>RETURN</h3><p>position and direction of the ray in world space (vector3, vector3)</p><h1><a name='//apple_ref/cpp/Function/go.set' class='dashAnchor'></a><a name='go.set'>go.set()</a></h1><p>sets a named property of the specified game object or component</p><h3>PARAMETERS</h3><p>url - url of the game object or component having the property (hash|string|url)</p><p>id - id of the property to set (hash|string)</p><p>value - the value to set (number|hash|url|vector3|vector4|quaternion|boolean)</p><h3>EXAMPLES</h3><p><p>Set a property "speed" of a script "player", the property must be declared in the player-script:</p>
+</pre></p><h1><a name='//apple_ref/cpp/Function/go.screen_ray' class='dashAnchor'></a><a name='go.screen_ray'>go.screen_ray()</a></h1><p>constructs a ray in world space from a position in screen space</p><p>NOTE! Don't use this function, WIP!</p><h3>PARAMETERS</h3><p>x - x-coordinate of the screen space position (number)</p><p>y - y-coordinate of the screen space position (number)</p><h3>RETURN</h3><p>position and direction of the ray in world space (vector3, vector3)</p><h1><a name='//apple_ref/cpp/Function/go.set' class='dashAnchor'></a><a name='go.set'>go.set()</a></h1><p>sets a named property of the specified game object or component</p><h3>PARAMETERS</h3><p>url - url of the game object or component having the property (hash|string|url)</p><p>id - id of the property to set (hash|string)</p><p>value - the value to set (any)</p><h3>EXAMPLES</h3><p><p>Set a property "speed" of a script "player", the property must be declared in the player-script:</p>
 <pre>
 go.property("speed", 50)
 </pre>

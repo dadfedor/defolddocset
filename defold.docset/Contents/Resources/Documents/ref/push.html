@@ -73,12 +73,13 @@ if err then
      ...
 end
 </pre></p><h1><a name='//apple_ref/cpp/Function/push.set_badge_count' class='dashAnchor'></a><a name='push.set_badge_count'>push.set_badge_count()</a></h1><p>set badge icon count</p><p>Set the badge count for application icon.
-NOTE: This function is only available on iOS.</p><h3>PARAMETERS</h3><p>count - badge count (number)</p><h1><a name='//apple_ref/cpp/Function/push.set_listener' class='dashAnchor'></a><a name='push.set_listener'>push.set_listener()</a></h1><p>set push listener</p><p>The listener callback has the following signature: function(self, payload, origin) where payload is a table
-with the push payload.</p><h3>PARAMETERS</h3><p>listener - listener callback function (function)</p><h3>EXAMPLES</h3><p><p>
+NOTE: This function is only available on iOS.</p><h3>PARAMETERS</h3><p>count - badge count (number)</p><h1><a name='//apple_ref/cpp/Function/push.set_listener' class='dashAnchor'></a><a name='push.set_listener'>push.set_listener()</a></h1><p>set push listener</p><p>The listener callback has the following signature: function(self, payload, origin, activated) where payload is a table
+with the push payload, origin is either ORIGIN_LOCAL or ORIGIN_REMOTE, and activated is either true or false depending
+on if the application was activated via the notification.</p><h3>PARAMETERS</h3><p>listener - listener callback function (function)</p><h3>EXAMPLES</h3><p><p>
 Set the push notification listener.
 </p>
 <pre>
-local function push_listener(self, payload, origin)
+local function push_listener(self, payload, origin, activated)
      -- The payload arrives here.
      pprint(payload)
      if origin == push.ORIGIN_LOCAL then

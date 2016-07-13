@@ -48,18 +48,21 @@ def get_defold_sha1():
 	return info["sha1"]
 
 def get_ref_doc():
+	print("Downloading ref-doc.zip")
 	sha1 = get_defold_sha1()
 	if os.path.exists(DOC_ZIP):
 		os.remove(DOC_ZIP)
 	urllib.urlretrieve("http://d.defold.com/archive/" + sha1 + "/engine/share/ref-doc.zip", DOC_ZIP)
 
 def cleanup():
+	print("Performing cleanup")
 	if os.path.exists(JSON_PATH):
 		shutil.rmtree(JSON_PATH)
 	if os.path.exists(DOC_ZIP):
 		os.remove(DOC_ZIP)
 
 def unzip_ref_doc():
+	print("Unpacking ref-doc.zip")
 	if os.path.exists(JSON_PATH):
 		shutil.rmtree(JSON_PATH)
 
@@ -70,6 +73,7 @@ def convert_hrefs(s):
 	return s.replace("<a href=\"/", "<a href=\"http://www.defold.com/")
 
 def create_docset():
+	print("Creating docset")
 	# create all paths
 	if os.path.exists(ref_path):
 		shutil.rmtree(ref_path)
@@ -99,6 +103,7 @@ def create_docset():
 			for file in files:
 				with open(os.path.join(root, file), "r") as fh:
 					if file.endswith(".json"):
+						print("  Parsing " + file)
 						class_name = file.replace("_doc.json", "")
 						class_path = class_name + ".html"
 						class_doc = ""
@@ -144,3 +149,4 @@ get_ref_doc()
 unzip_ref_doc()
 create_docset()
 cleanup()
+print("Done!")

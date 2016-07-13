@@ -62,7 +62,7 @@ The following property constants are also defined equalling the corresponding pr
 How to start a simple color animation, where the node fades in to white during 0.5 seconds:
 <pre>
 gui.set_color(node, vmath.vector4(0, 0, 0, 0)) -- node is fully transparent
-gui.animate(node, gui.COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.5) -- start animation
+gui.animate(node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.5) -- start animation
 </pre>
 </p>
 <p>
@@ -71,7 +71,7 @@ How to start a sequenced animation where the node fades in to white during 0.5 s
 <pre>
 local function on_animation_done(self, node)
     -- fade out node, but wait 2 seconds before the animation starts
-    gui.animate(node, gui.COLOR, vmath.vector4(0, 0, 0, 0), gui.EASING_OUTQUAD, 0.5, 2.0)
+    gui.animate(node, gui.PROP_COLOR, vmath.vector4(0, 0, 0, 0), gui.EASING_OUTQUAD, 0.5, 2.0)
 end
 
 function init(self)
@@ -80,7 +80,7 @@ function init(self)
     -- node is initially set to fully transparent
     gui.set_color(my_node, vmath.vector4(0, 0, 0, 0))
     -- animate the node immediately and call on_animation_done when the animation has completed
-    gui.animate(my_node, gui.COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.5, 0.0, on_animation_done)
+    gui.animate(my_node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_INOUTQUAD, 0.5, 0.0, on_animation_done)
 end
 </pre>
 <p>How to animate a node's y position using a crazy custom easing curve:</p>
@@ -110,7 +110,10 @@ end
   <li><code>"fill_angle"</code> (pie nodes)</li>
   <li><code>"inner_radius"</code> (pie nodes)</li>
   <li><code>"slice9"</code> (slice9 nodes)</li>
-</ul></p><h1><a name='//apple_ref/cpp/Function/gui.cancel_flipbook' class='dashAnchor'></a><a name='gui.cancel_flipbook'>gui.cancel_flipbook()</a></h1><p>pause or unpause the node flipbook animation</p><p>Pause or unpause the node flipbook animation.</p><h3>PARAMETERS</h3><p>node - node cancel flipbook animation for (node)</p><h1><a name='//apple_ref/cpp/Function/gui.clone' class='dashAnchor'></a><a name='gui.clone'>gui.clone()</a></h1><p>clone a node</p><p>This does not include its children. Use gui.clone_tree for that purpose.</p><h3>PARAMETERS</h3><p>node - node to clone (node)</p><h3>RETURN</h3><p>the cloned node (node)</p><h1><a name='//apple_ref/cpp/Function/gui.clone_tree' class='dashAnchor'></a><a name='gui.clone_tree'>gui.clone_tree()</a></h1><p>clone a node including its children</p><p>Use gui.clone to clone a node excluding its children.</p><h3>PARAMETERS</h3><p>node - root node to clone (node)</p><h3>RETURN</h3><p>a table mapping node ids to the corresponding cloned nodes (table)</p><h1><a name='//apple_ref/cpp/Function/gui.delete_node' class='dashAnchor'></a><a name='gui.delete_node'>gui.delete_node()</a></h1><p>deletes a node</p><h3>PARAMETERS</h3><p>node - node to delete (node)</p><h1><a name='//apple_ref/cpp/Function/gui.delete_texture' class='dashAnchor'></a><a name='gui.delete_texture'>gui.delete_texture()</a></h1><p>delete texture</p><p>Delete a dynamically created texture.</p><h3>PARAMETERS</h3><p>texture - texture id (string|hash)</p><h3>EXAMPLES</h3><p><pre>
+</ul></p><h1><a name='//apple_ref/cpp/Function/gui.cancel_flipbook' class='dashAnchor'></a><a name='gui.cancel_flipbook'>gui.cancel_flipbook()</a></h1><p>cancel a node flipbook animation</p><p>Cancels any running flipbook animation on the specified node.</p><h3>PARAMETERS</h3><p>node - node cancel flipbook animation for (node)</p><h3>EXAMPLES</h3><p><pre>
+local node = gui.get_node("anim_node")
+gui.cancel_flipbook(node)
+</pre></p><h1><a name='//apple_ref/cpp/Function/gui.clone' class='dashAnchor'></a><a name='gui.clone'>gui.clone()</a></h1><p>clone a node</p><p>This does not include its children. Use gui.clone_tree for that purpose.</p><h3>PARAMETERS</h3><p>node - node to clone (node)</p><h3>RETURN</h3><p>the cloned node (node)</p><h1><a name='//apple_ref/cpp/Function/gui.clone_tree' class='dashAnchor'></a><a name='gui.clone_tree'>gui.clone_tree()</a></h1><p>clone a node including its children</p><p>Use gui.clone to clone a node excluding its children.</p><h3>PARAMETERS</h3><p>node - root node to clone (node)</p><h3>RETURN</h3><p>a table mapping node ids to the corresponding cloned nodes (table)</p><h1><a name='//apple_ref/cpp/Function/gui.delete_node' class='dashAnchor'></a><a name='gui.delete_node'>gui.delete_node()</a></h1><p>deletes a node</p><h3>PARAMETERS</h3><p>node - node to delete (node)</p><h1><a name='//apple_ref/cpp/Function/gui.delete_texture' class='dashAnchor'></a><a name='gui.delete_texture'>gui.delete_texture()</a></h1><p>delete texture</p><p>Delete a dynamically created texture.</p><h3>PARAMETERS</h3><p>texture - texture id (string|hash)</p><h3>EXAMPLES</h3><p><pre>
 function init(self)
      -- Create a texture.
      if gui.new_texture("temp_tx", 10, 10, "rgb", string.rep('\0', 10 * 10 * 3)) then
